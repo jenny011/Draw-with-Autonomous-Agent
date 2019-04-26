@@ -149,11 +149,12 @@ class Agent{
     push();
     translate(this.pos.x,this.pos.y);
     rotate(this.angle);
-    stroke(0,220,255,50);
-    point(0,0);
     if(params.debugMode){
-      stroke(220,0,255,50);
+      stroke(255,200,0,50);
+    }else{
+      stroke(0,220,255,50);
     }
+    point(0,0);
     pop();
   }
 }
@@ -162,7 +163,11 @@ class Obstacle{
   constructor(x,y){
     this.pos = createVector(x,y);
     this.rad = 10;
-    this.color = color(0,random(150,200),random(150,200),10);
+    if(params.debugMode){
+      this.color = color(random(150,200),random(100,150),0,10);
+    }else{
+      this.color = color(0,random(150,200),random(150,200),10);
+    }
     this.avoidArea = random(50,100)+this.rad;
   }
   display(){
